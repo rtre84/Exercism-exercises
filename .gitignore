@@ -1,0 +1,6 @@
+# Exercism related
+elixir/hello-world/.exercism/
+.exercism/
+
+# IDE related
+.idea
