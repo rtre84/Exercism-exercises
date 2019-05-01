@@ -14,8 +14,9 @@ defmodule RNATranscription do
     quotes. So the Map data structure is used since fetching is in constant
     time. 
     
-    Each letter in the input is iterated through and finally the output is represented 
-    as a string.
+    Each letter in the input is iterated through and finally the output is returned as int 
+    but represents chars. Doing a "?A" or "?G" in iex gives you the corresponding 
+    representation.
   """
   @spec to_rna([char]) :: [char]
   def to_rna(dna) do
@@ -29,6 +30,5 @@ defmodule RNATranscription do
 
     dna 
     |> Enum.map(fn letter -> Map.get(dna_to_rna_map, letter) end)
-    # |> to_charlist
   end
 end
