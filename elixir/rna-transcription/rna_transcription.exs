@@ -22,10 +22,10 @@ defmodule RNATranscription do
   def to_rna(dna) do
 
     dna_to_rna_map = %{
-      71 => 67,
-      67 => 71,
-      84 => 65,
-      65 => 85
+      ?G => ?C,
+      ?C => ?G,
+      ?T => ?A,
+      ?A => ?U
     }
 
     dna 
