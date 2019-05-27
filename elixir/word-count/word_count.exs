@@ -8,9 +8,10 @@ defmodule Words do
   def count(sentence) do
   	sentence 
   	|> String.downcase()
-  	|> String.split([" ", ",", "_"], trim: true)
-  	|> Enum.map(fn word -> String.replace(word, ~r/[\b!+|&+|@+|$+|%+|^+|:+]/, "") end)
-  	|> Enum.reduce(%{}, fn word, acc -> Map.put(acc, word, if acc[word] != nil do acc[word]+1 else 1 end ) end)
-  	|> Map.delete("")
+    # The only way (that I can seem to find) to combine both replace and split
+    # String.split(String.replace(sentence, ~r/[\b!+|&+|@+|$+|%+|^+|:+]/, ""), [" ", ",", "_"], trim: true)
+    |> String.replace(~r/[\b!+|&+|@+|$+|%+|^+|:+]/, "") 
+    |> String.split([" ", ",", "_"], trim: true) 
+    |> Enum.reduce(%{}, fn word, acc -> Map.update(acc, word, 1, &(&1+1)) end)
   end
 end
